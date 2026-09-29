@@ -1,0 +1,13 @@
+services:
+  godot-docs-mcp:
+    build:
+      context: .
+      args:
+        GODOT_DOCS_BRANCH: ${GODOT_DOCS_BRANCH:-stable}
+    image: godot-docs-mcp:latest
+    restart: unless-stopped
+    ports:
+      - "8765:8765"
+    environment:
+      GODOT_DOCS_BRANCH: ${GODOT_DOCS_BRANCH:-stable}
+      MCP_TOKEN: ${MCP_TOKEN:?set MCP_TOKEN}
